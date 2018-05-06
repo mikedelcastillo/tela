@@ -1,0 +1,160 @@
+#shelf-header {
+  color: #212121;
+  z-index: 1000;
+  font-size: 2.5em;
+}
+
+#shelf-header #shelf-title {
+  font-family: "Theano Didot Regular", serif;
+  text-align: center;
+  padding: 0.5em;
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: opacity 0.5s, -webkit-transform 0.5s;
+  -o-transition: opacity 0.5s, -o-transform 0.5s;
+  -moz-transition: opacity 0.5s, transform 0.5s, -moz-transform 0.5s;
+  transition: opacity 0.5s, transform 0.5s;
+  transition: opacity 0.5s, transform 0.5s, -webkit-transform 0.5s, -moz-transform 0.5s, -o-transform 0.5s;
+}
+
+#shelf-header #shelf-title.pre-animation {
+  opacity: 0;
+  -webkit-transition: all 0s;
+  -o-transition: all 0s;
+  -moz-transition: all 0s;
+  transition: all 0s;
+  -webkit-transform: translateY(0.1em);
+  -moz-transform: translateY(0.1em);
+  -moz-osx-transform: translateY(0.1em);
+  -ms-transform: translateY(0.1em);
+  -o-transform: translateY(0.1em);
+  transform: translateY(0.1em);
+}
+
+#shelf-wrapper {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background-color: whitesmoke;
+}
+
+#shelf-wrapper #shelf-center {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+@media screen and (min-width: 0) and (max-width: 600px) {
+  #shelf-wrapper #shelf-center {
+    max-width: 300px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  #shelf-wrapper #shelf-center {
+    max-width: 600px;
+  }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1200px) {
+  #shelf-wrapper #shelf-center {
+    max-width: 900px;
+  }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1500px) {
+  #shelf-wrapper #shelf-center {
+    max-width: 1200px;
+  }
+}
+
+@media screen and (min-width: 1501px) {
+  #shelf-wrapper #shelf-center {
+    max-width: 1500px;
+  }
+}
+
+#shelf-wrapper #shelf-center .book {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: scale(0.98);
+  -moz-transform: scale(0.98);
+  -moz-osx-transform: scale(0.98);
+  -ms-transform: scale(0.98);
+  -o-transform: scale(0.98);
+  transform: scale(0.98);
+}
+
+#shelf-wrapper #shelf-center .book.pre-animation {
+  -webkit-transform: translate(0, 2em);
+  -moz-transform: translate(0, 2em);
+  -moz-osx-transform: translate(0, 2em);
+  -ms-transform: translate(0, 2em);
+  -o-transform: translate(0, 2em);
+  transform: translate(0, 2em);
+  opacity: 0;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#shelf-wrapper #shelf-center .book:hover {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -moz-osx-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+#shelf-wrapper #shelf-center .book:active {
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -moz-osx-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -o-transform: scale(0.9);
+  transform: scale(0.9);
+  opacity: 0.5;
+}
+
+#shelf-wrapper #shelf-center .book a {
+  display: block;
+  text-decoration: none;
+}
+
+#shelf-wrapper #shelf-center .book .preview {
+  background-position: center;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#shelf-wrapper #shelf-center .book .preview .ratio {
+  width: 100%;
+  height: auto;
+}
+
+#shelf-wrapper #shelf-center .book .name {
+  background-color: white;
+  text-align: center;
+  font-family: "Theano Didot Regular", serif;
+  color: #212121;
+  padding: 0.5em 0;
+  font-size: 1.5em;
+}

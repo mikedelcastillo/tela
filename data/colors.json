@@ -1,0 +1,30 @@
+[
+  {
+    "id": "GRYKNT",
+    "name": "Gray Knit",
+    "color": {
+      "hex": "#98A3B6"
+    }
+  },
+  {
+    "id": "MRN",
+    "name": "Maroon",
+    "color": {
+      "hex": "#8B1136"
+    }
+  },
+  {
+    "id": "EVRGRN",
+    "name": "Evergreen",
+    "color": {
+      "hex": "#3A4A68"
+    }
+  },
+  {
+    "id": "BLK",
+    "name": "Black",
+    "color": {
+      "hex": "#14121F"
+    }
+  }
+]

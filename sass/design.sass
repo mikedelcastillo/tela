@@ -1,0 +1,253 @@
+@import defaults
+@import mixins
+
+$thumbs-width: 6em
+$thumb-padding: 0.5em
+
+#design-wrapper
+  padding: 2em 0
+  background-color: white
+
+  #design-center
+    max-width: 900px
+    margin: auto
+
+    +range($header-break + 1)
+      #preview-wrapper
+        width: 40%
+        float: left
+        margin-left: $thumbs-width
+
+      #thumbs-wrapper
+        position: absolute
+        left: -$thumbs-width
+        top: 0
+        width: $thumbs-width
+        height: 100%
+
+      #info-wrapper
+        width: calc(60% - #{$thumbs-width})
+        float: right
+        padding: 0 $thumb-padding
+
+    +range(0, $header-break)
+      #preview-wrapper
+        width: calc(100% - #{$thumbs-width + $thumb-padding})
+        margin-right: $thumbs-width
+        margin-left: $thumb-padding
+
+      #thumbs-wrapper
+        position: absolute
+        right: -$thumbs-width
+        top: 0
+        width: $thumbs-width
+        height: 100%
+
+      #info-wrapper
+        width: 100%
+        padding-top: $thumb-padding
+
+    #preview-wrapper
+      .ratio
+        $thumbs-height: 5em
+        opacity: 0
+        width: 100%
+        height: auto
+        margin-bottom: $thumbs-height
+
+      #designs-wrapper
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        overflow: hidden
+
+        .design
+          opacity: 0
+          background-position: center
+          background-size: cover
+          background-repeat: no-repeat
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          height: 100%
+          //transition: opacity 0.5s, transform 0.5s, background 0s, background-position 0s
+          +prefix(transform, scale(1.1))
+
+          &.active
+            opacity: 1
+            +prefix(transform, scale(1))
+
+    #thumbs-wrapper
+      .thumb
+        display: block
+        height: $thumbs-width - $thumb-padding * 2
+        width: $thumbs-width - $thumb-padding * 2
+        margin: $thumb-padding
+        margin-top: 0
+        background-position: center
+        background-repeat: no-repeat
+        background-size: cover
+
+    #info-wrapper
+      #design-name
+        font-size: 2em
+        font-weight: 300
+        padding: 3% 7%
+
+        &.light
+          color: white
+
+        &.dark
+          color: rgba(0, 0, 0, 0.9)
+
+      #design-details
+        background-color: $color-off-white
+        padding: 1em 7%
+        text-transform: uppercase
+        margin-bottom: 0.5em
+
+        #design-color
+          color: $color-gray-text
+          font-size: 0.8em
+          font-weight: bold
+          float: left
+          padding-top: 0.6em
+
+        #design-price
+          float: right
+          font-weight: 300
+          font-size: 1.5em
+
+          &:before
+            content: "PHP "
+            font-size: 0.7em
+            font-weight: 400
+
+      .desc-par
+        padding: 0 7%
+        line-height: 1.75em
+        color: rgb(105, 105, 105)
+
+        a
+          color: rgb(93, 93, 93)
+          text-decoration: none
+
+          &:after
+            position: absolute
+            bottom: -1px
+            height: 1px
+            content: ' '
+            width: 100%
+            left: 0
+            border-bottom: 1px dashed rgb(93, 93, 93)
+
+      .desc-header
+        color: $color-dark-gray
+        padding: 1em 7%
+        text-transform: uppercase
+        font-size: 0.8em
+        font-weight: bold
+
+      #other-colors-wrapper
+        padding: 0 7%
+        .other-color
+          display: block
+          float: left
+          width: $thumbs-width - $thumb-padding * 2
+          height: $thumbs-width - $thumb-padding * 2
+          margin: $thumb-padding
+          margin-left: 0
+          background-position: center
+          background-repeat: no-repeat
+          background-size: cover
+
+
+  #preview-wrapper, #design-name, #design-details, .desc-header, .desc-par, #other-colors-wrapper
+    transition: transform 0.5s, opacity 0.5s, width 0s
+
+    &.pre-animation
+      opacity: 0
+      +prefix(transform, scale(0.95))
+
+.other-color, .thumb
+  transition: 0.5s border, transform 0.2s, active 0.2s, background 0s
+  cursor: pointer
+
+  &.active
+    border: 0.2em solid
+    border-color: $color-dark-gray
+
+  &:active
+    opacity: 0.5
+    +prefix(transform, scale(0.9))
+
+#btn-size-chart
+  background-color: $color-dark-gray
+  display: inline-block
+  font-weight: bold
+  font-size: 1em
+  text-transform: uppercase
+  padding: 0.5em 0.6em
+  margin: 0 0.5em
+  color: $color-off-white
+  cursor: pointer
+  transition: transform 0.2s, opacity 0.2s
+
+  &:active
+    +prefix(transform, scale(1.02))
+    opacity: 0.5
+
+
+  &:hover
+    +prefix(transform, scale(0.98))
+
+#size-chart-wrapper
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: 60000
+  display: none
+  opacity: 0
+  transition: all 0.2s
+
+  &.active
+    background-color: rgba(0, 0, 0, 0.75)
+    opacity: 1
+    display: block
+
+  #btn-close
+    position: absolute
+    top: 5%
+    right: 5%
+    background-image: url(/img/elements/close-white.png)
+    background-position: center
+    background-repeat: no-repeat
+    background-size: 50%
+    width: 3em
+    height: 3em
+    border-radius: 100px
+    background-color: rgba(0, 0, 0, 0.5)
+    cursor: pointer
+
+  #size-chart
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 100%
+    height: 100%
+    max-width: 900px
+    background-image: url(/img/designs/tela-size-chart.jpg)
+    background-position: center
+    background-size: contain
+    background-repeat: no-repeat
+    +prefix(transform-origin, 11% 11%)
+    +prefix(transform, scale(0.98) translate(-50%, -50%))
+    transition: transform 0.2s
+
+  &.active #size-chart
+    +prefix(transform, scale(1) translate(-50%, -50%))

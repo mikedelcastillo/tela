@@ -1,0 +1,26 @@
+extends ../template/layout
+include ../template/mixins
+
+prepend config
+  - title = lookbook.name;
+
+append config
+  - 
+    css.push("/css/lookbook.css");
+    js.push("/js/lookbook.js");
+    headerClass = "white bg-gray min";
+    activeNav = "Matter";
+    lookbook.images.unshift(lookbook.cover);
+    
+block content
+  #lookbook-wrapper
+    #lookbook-center
+      #lookbook
+        each img, i in lookbook.images
+          .page(style=`background-image: url(${img.url})`)
+        #lookbook-controls 
+          a#btn-close.btn(href="/matter/lookbook")
+          .text#lookbook-title= lookbook.name
+          .btn#btn-prev
+          .text#page-count
+          .btn#btn-next

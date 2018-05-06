@@ -1,0 +1,39 @@
+extends ../template/layout
+include ../template/mixins
+
+prepend config
+  - title = "Shop";
+
+append config
+  - 
+    css.push("/css/shop.css")
+    headerClass = "white bg-gray min";
+    activeNav = "Shop";
+
+block content
+  #shop-navigation-header
+    #shop-navigation-center 
+      .text #[a(href="/shop") Shop]
+  #shop-wrapper
+    #shop-center
+      each design in data.designs
+        each color in design.colors
+          - 
+            var c = data.colors.find(utils.sameId(color));
+            var link = utils.shopId(design, color);
+            var image = color.images[0].thumb;
+            
+          span.shop-item.pre-animation
+            a(href=link)
+              .preview(style=`background-image: url(${image})`)
+                img.ratio(src="/img/elements/ratios/1x1.png")
+              .text
+                .name= design.name
+                .color 
+                  .preview(style=`background-color: ${c.color.hex}`)
+                  span in #{c.name}
+                .price= design.price
+                .clear
+                
+      .clear
+  

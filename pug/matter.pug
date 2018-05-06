@@ -1,0 +1,31 @@
+extends template/layout
+include template/mixins
+
+prepend config
+  - title = "Matter";
+
+append config
+  - 
+    css.push("/css/matter.css");
+    headerClass = "white bg-gray min";
+    activeNav = "Matter";
+
+mixin ratio
+  - //img.ratio(src="/img/elements/ratios/1x1.png")
+  .ratio
+    
+block content
+  #matter-wrapper
+    a.square.pre-animation.left(href="/matter/lookbook/")
+      +ratio
+      .btn
+        span.arrow &lt;
+        span.text Lookbook
+        .clear
+    a.square.pre-animation.right(href="/matter/campaign/")
+      +ratio
+      .btn
+        span.text Campaign
+        span.arrow &gt;
+        .clear
+    .clear

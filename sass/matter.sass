@@ -1,0 +1,74 @@
+@import mixins
+@import defaults
+
+#matter-wrapper
+  .square
+    width: 50%
+    float: left
+    background-position: center
+    background-size: cover
+    background-repeat: no-repeat
+    display: block
+    +break-grid(height, 300px, 50px, 300px, 200px, 10)
+    transition: all 0.5s
+
+    +range(0, 600px)
+      width: 100%
+
+    &.pre-animation
+      opacity: 0
+      +prefix(transform, translate(0, 10em))
+
+    .btn
+      position: absolute
+      bottom: 20%
+      bottom: 5%
+      font-size: 2em
+      text-transform: uppercase
+      font-family: $font-sans-serif
+      font-weight: 300
+      color: white
+      padding: 0.2em 1em
+      box-shadow: $shad-drop
+      vertical-align: middle
+
+      .arrow
+        vertical-align: middle
+        font-size: 0.9em
+        padding: 0.1em 0.3em
+        +prefix(transform, scale(0.5, 2))
+
+      .text
+        vertical-align: middle
+
+    &:hover
+      .ratio
+        opacity: 0
+
+    &:active
+      +prefix(transform, scale(0.9))
+      opacity: 0.5
+
+    .ratio
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      background-color: black
+      opacity: 0.5
+      transition: opacity 0.2s
+
+
+
+    &.left
+      background-image: url(/img/lookbook/1/cover-no-title-medium.jpg)
+
+      .btn
+        left: 0
+
+    &.right
+      background-image: url(/img/campaign/1/1-medium.jpg)
+
+      .btn
+        right: 0

@@ -1,0 +1,364 @@
+@import defaults
+@import mixins
+
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700')
+@import fonts.css
+
+body, html
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+  font-family: $font-sans-serif
+  +break-grid("font-size", 12px, 1px, 400px, 400px, 5)
+  background-color: $color-dark-gray
+  +prefix(touch-action, manipulation)
+
+.clear
+  clear: both
+
+*
+  position: relative
+  box-sizing: border-box
+  +prefix(tap-highlight-color, transparent)
+  text-rendering: optimizeLegibility
+  -webkit-touch-callout: none
+  -khtml-user-select: none
+  +prefix(user-select, none)
+
+.selectable
+  -webkit-touch-callout: text
+  -khtml-user-select: text
+  +prefix(user-select, text)
+
+p
+  line-height: 1.5em
+
+#loading-wrapper
+  z-index: 100000
+  background-color: black
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+  #loading-center
+    $width: 7em
+    $line: 0.2em
+    $min: 1em
+    position: absolute
+    top: 50%
+    left: 50%
+    +prefix(transform, translate(-50%, -50%))
+    width: $width
+
+    #loading-anim
+      display: block
+      position: absolute
+      border: #{$line} solid white
+      height: $min
+      +prefix(animation, 2s loading-anim infinite)
+      +prefix(transform, translateZ(0.0))
+
+      @keyframes loading-anim
+        0%
+          width: $min
+          left: 0
+        25%
+          width: $width
+          left: 0
+        50%
+          width: $min
+          left: $width - $min
+        75%
+          width: $width
+          left: 0
+        100%
+          width: $min
+          left: 0
+.section
+  display: block
+
+  &.padded-5
+    padding: 0 5%
+
+  &.full
+    width: 100%
+    height: 100%
+
+  &.white
+    background-color: white
+
+  &.shad-subtle
+    box-shadow: $shad-subtle
+
+.center-wrapper
+  //+break-grid("max-width", 200px, 200px, 600px, 200px, 5)
+  max-width: 900px
+  margin: auto
+
+  &.narrow
+    max-width: 600px
+
+#main-header
+  padding: 1.5em 5%
+  z-index: 50000
+  width: 100%
+  font-family: $font-sans-serif
+  font-weight: 300
+
+  &.absolute
+    position: absolute
+
+  &.fixed
+    +range(0, $header-break)
+      position: absolute
+
+    +range($header-break)
+      position: fixed
+
+  *
+    transition: color 0.2s
+
+  #logo-wrapper
+    text-align: center
+    float: left
+    text-decoration: none
+    display: block
+
+    #text-tela
+      font-family: $font-outline
+      font-size: 3.5em
+      letter-spacing: 0.3em
+
+    #text-basics
+      text-transform: uppercase
+      font-size: 1.3em
+      letter-spacing: 0.3em
+
+  #nav-wrapper
+    float: right
+    text-align: center
+    padding-top: 1.5em
+    //remove line below when search added
+    padding-top: 2.5em
+
+    #search-btn
+      display: inline-block
+      display: none
+      width: 3em
+      height: 2em
+      background-image: url(/img/elements/search-white.png)
+      background-position: center 1em
+      background-size: 1em
+      background-repeat: no-repeat
+      cursor: pointer
+
+    .nav-main-group
+      display: inline-block
+
+      .nav-main-link, .nav-sub-link
+        cursor: pointer
+        text-decoration: none
+        text-transform: uppercase
+        font-size: 1em
+        letter-spacing: 0.2em
+
+        &:after
+          content: ' '
+          display: block
+          position: absolute
+          height: 1px
+          width: 0
+          left: 50%
+          top: 2.1em
+          +prefix(transform, translate(-50%, 0))
+          transition: width 0.2s
+
+        &.active:after
+          width: 70%
+
+        &:hover:after
+          width: 90%
+
+        &:active
+          opacity: 0.5
+
+          &:after
+            width: 30%
+
+      $drop-dist: 2.4em
+      .nav-main-link
+        padding: 0.6em 1.1em
+        padding-bottom: $drop-dist
+
+      .nav-sub-group
+        display: none
+        position: absolute
+        padding: 0.5em
+        left: 50%
+        top: $drop-dist
+        +prefix(transform, translate(-50%, 0))
+
+        .nav-sub-link
+          display: block
+          padding: 7px 10px
+          font-size: 0.8em
+
+        &:after
+          content: ' '
+          display: block
+          position: absolute
+          left: 50%
+          top: 0
+          +prefix(transform, translate(-50%, -50%) rotate(45deg))
+          width: 10px
+          height: 10px
+
+      &:hover, &.show-drop
+        .nav-sub-group
+          display: block
+
+  +range(0px, $header-break)
+    #logo-wrapper, #nav-wrapper
+      float: none
+      margin: auto
+      width: 100%
+
+    #logo-wrapper
+      font-size: 0.8em
+
+  +range($header-break + 1)
+    &.min
+      #logo-wrapper
+        #text-tela, #text-basics
+          float: left
+
+        #text-basics
+          padding-top: 1.2em
+          padding-left: 0.3em
+
+      #nav-wrapper
+        padding-top: 1.85em
+
+  &, &.gray
+    #logo-wrapper
+      color: $color-dark-gray
+
+    #nav-wrapper
+      a
+        color: $color-dark-gray
+
+        &:after
+          background-color: $color-dark-gray
+
+      .nav-sub-group
+        background-color: white
+
+        &:after
+          background-color: white
+
+
+
+  &.white
+    #logo-wrapper
+      color: white
+
+    #nav-wrapper
+      a
+        color: white
+
+        &:after
+          background-color: white
+
+      .nav-sub-group
+        background-color: black
+
+        &:after
+          background-color: black
+
+  &.bg-grad-black
+    +gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0))
+    padding-bottom: 4em
+
+  &.bg-grad-white
+    +gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))
+    padding-bottom: 4em
+
+  &.bg-gray
+    background-color: $color-dark-gray
+    box-shadow: $shad-subtle
+
+#footer-wrapper
+  background-color: $color-dark-gray
+  box-shadow: $shad-subtle
+  color: white
+  padding: 2em 5%
+  line-height: 2em
+
+  .column
+    padding: 1em 0
+
+    +range(501px)
+      &.col-1
+        float: left
+
+      &.col-2
+        padding-right: 1em
+        float: right
+        text-align: right
+
+    +range(0, 500px)
+      width: 100%
+      &.col-1
+        margin: auto
+        max-width: 200px
+
+      &.col-2
+        text-align: center
+
+  .col-2, .col-3
+    a
+      color: inherit
+      text-decoration: underline
+
+  .social-link
+    text-decoration: none
+    color: inherit
+    display: block
+    opacity: 0.7
+    transition: all 0.2s
+
+    &:hover
+      opacity: 1
+
+    &:active
+      +prefix(transform, scale(0.98))
+      +prefix(transform-origin, left)
+
+    .icon
+      width: 2.5em
+      height: 2.5em
+      background-position: center
+      background-size: 100%
+      background-repeat: no-repeat
+      float: left
+
+    .text
+      float: left
+      padding-top: 0.2em
+      padding-left: 1em
+
+  .nav-link
+    text-decoration: none
+    color: inherit
+
+  #copyright
+    font-family: $font-serif
+    font-size: 1.2em
+
+  #bymike
+    color: inherit
+    font-size: 0.9em
+    opacity: 0.4

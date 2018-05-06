@@ -1,0 +1,113 @@
+@import defaults
+@import mixins
+
+#lookbook-wrapper
+  width: 100%
+  height: 100%
+  background-color: white
+
+  #lookbook-center
+    width: 100%
+    height: 100%
+    padding: 2%
+
+    #lookbook
+      width: 100%
+      height: 100%
+      +prefix(perspective, 100em)
+
+      #lookbook-controls
+        z-index: 1000000
+        position: absolute
+        bottom: 5%
+        left: 50%
+        +prefix(transform, translateX(-50%))
+        opacity: 1
+        white-space: nowrap
+        color: $color-dark-gray
+        transition: opacity 0.1s
+        background-color: white
+        box-shadow: $shad-drop
+
+        &.hidden
+          opacity: 0
+          transition: opacity 0.5s
+
+        *
+          display: inline-block
+          vertical-align: middle
+          text-decoration: none
+          color: $color-dark-gray
+
+        .btn
+          width: 3em
+          height: 3em
+          text-align: center
+          background-size: 40%
+          background-position: center
+          background-repeat: no-repeat
+          cursor: pointer
+          transition: all 0.2s
+          opacity: 0.5
+
+          &:hover
+            +prefix(transform, scale(1.02))
+            opacity: 1
+
+          &:active
+            +prefix(transform, scale(0.9))
+            opacity: 0.5
+
+        #btn-close
+          background-image: url(/img/elements/close-gray.png)
+
+        #btn-next
+          background-image: url(/img/elements/right-arrow-gray.png)
+
+        #btn-prev
+          background-image: url(/img/elements/left-arrow-gray.png)
+
+        #lookbook-title
+          font-size: 1.5em
+          font-family: $font-serif
+          padding: 0.5em
+
+          +range(0, 319px)
+            display: none
+
+        #page-count
+          font-size: 1em
+          opacity: 0.6
+
+      .page
+        background-color: $color-off-white
+        width: 100%
+        height: 100%
+        background-position: center
+        background-size: contain
+        background-repeat: no-repeat
+        position: absolute
+        top: 0
+        left: 0
+        opacity: 0
+        display: none
+        transition: all 0.5s ease-in-out
+        +prefix(transform-origin, left center)
+
+        &.left
+          +prefix(transform, rotateY(-90deg))
+          z-index: 5000
+          opacity: 0
+          display: block
+
+        &.right
+          +prefix(transform, rotateY(45deg))
+          z-index: 3000
+          opacity: 0
+          display: block
+
+        &.active
+          +prefix(transform, rotateY(0deg))
+          z-index: 4000
+          opacity: 1
+          display: block

@@ -1,0 +1,47 @@
+// Written by Mike del Castillo 2017
+// Do not distribute
+
+@mixin prefix($prop, $val)
+  -webkit-#{$prop}: $val
+  -moz-#{$prop}: $val
+  -moz-osx-#{$prop}: $val
+  -ms-#{$prop}: $val
+  -o-#{$prop}: $val
+  #{$prop}: $val
+
+@mixin range($from, $to: -1)
+  @if ($to == -1)
+    @media screen and (min-width: #{$from})
+      @content
+  @else
+    @media screen and (min-width: #{$from}) and (max-width: #{$to})
+      @content
+
+@mixin break-grid($prop, $pb, $pm, $bb, $bm, $n)
+  @for $i from 1 through $n
+    $lb: $bb + $bm * ($i - 2) + 1
+    $ub: $bb + $bm * ($i - 1)
+    @if $i == 1
+      $lb: 0
+    @if $i == $n
+      $ub: -1
+    +range($lb, $ub)
+      #{$prop}: ($i - 1) * $pm + $pb
+
+@mixin break-grid-inv-perc($prop, $pb, $pm, $bb, $bm, $n)
+  @for $i from 1 through $n
+    $lb: $bb + $bm * ($i - 2) + 1
+    $ub: $bb + $bm * ($i - 1)
+    @if $i == 1
+      $lb: 0
+    @if $i == $n
+      $ub: -1
+    +range($lb, $ub)
+      #{$prop}: 1/($i) * $pm + $pb
+
+@mixin gradient($x1, $x2)
+  background: $x1
+  background: -moz-linear-gradient(top, #{$x1} 0%, #{$x2} 100%)
+  background: -webkit-linear-gradient(top, #{$x1} 0%,#{$x2} 100%)
+  background: linear-gradient(to bottom, #{$x1} 0%,#{$x2} 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$x1}', endColorstr='#{$x2}',GradientType=0 )

@@ -1,0 +1,110 @@
+#campaign {
+  border: 10px solid white;
+  border-bottom: 0;
+  background-color: white;
+}
+
+#campaign img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: auto;
+  display: block;
+  border-bottom: 10px solid white;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform-origin: top center;
+  -moz-transform-origin: top center;
+  -moz-osx-transform-origin: top center;
+  -ms-transform-origin: top center;
+  -o-transform-origin: top center;
+  transform-origin: top center;
+}
+
+#campaign img.pre-animation {
+  -webkit-transform: translate(0, 5em) scale(0.9);
+  -moz-transform: translate(0, 5em) scale(0.9);
+  -moz-osx-transform: translate(0, 5em) scale(0.9);
+  -ms-transform: translate(0, 5em) scale(0.9);
+  -o-transform: translate(0, 5em) scale(0.9);
+  transform: translate(0, 5em) scale(0.9);
+  opacity: 0;
+}
+
+#campaign #info {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #212121;
+  bottom: 7%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -moz-osx-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-size: 1.8em;
+  font-weight: 300;
+  padding: 0.2em;
+  white-space: nowrap;
+  -webkit-transition: background 0.2s;
+  -o-transition: background 0.2s;
+  -moz-transition: background 0.2s;
+  transition: background 0.2s;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  -webkit-transition: 0.2s all;
+  -o-transition: 0.2s all;
+  -moz-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+#campaign #info:hover {
+  background-color: white;
+}
+
+#campaign #info:active {
+  -webkit-transform: translateX(-50%) scale(0.9);
+  -moz-transform: translateX(-50%) scale(0.9);
+  -moz-osx-transform: translateX(-50%) scale(0.9);
+  -ms-transform: translateX(-50%) scale(0.9);
+  -o-transform: translateX(-50%) scale(0.9);
+  transform: translateX(-50%) scale(0.9);
+}
+
+#campaign #info .item {
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
+#campaign #info #btn-return {
+  width: 1.35em;
+  height: 1.35em;
+  text-align: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(/img/elements/left-arrow-gray.png);
+  -moz-background-size: 35%;
+  -o-background-size: 35%;
+  background-size: 35%;
+}
+
+#campaign #info #btn-return:after {
+  content: ' ';
+  width: 1px;
+  height: 80%;
+  top: 10%;
+  right: -1px;
+  background-color: #212121;
+  position: absolute;
+}
+
+#campaign #info #name {
+  font-family: "Theano Didot Regular", serif;
+  padding: 0 0.5em;
+  cursor: default;
+}

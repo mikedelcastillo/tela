@@ -1,0 +1,20 @@
+extends ../template/layout
+include ../template/mixins
+
+prepend config
+  - title = campaign.name;
+
+append config
+  - 
+    css.push("/css/campaign.css")
+    headerClass = "white bg-grad-black fixed min";
+    activeNav = "Matter";
+
+append content
+  #campaign
+    each image in campaign.images
+      img.pre-animation(src=image.url style="width: 100%; height: auto")
+      
+    #info
+      a.item#btn-return(href="/matter/campaign/")
+      span.item#name= campaign.name

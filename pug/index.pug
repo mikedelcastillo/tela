@@ -1,0 +1,32 @@
+extends template/layout
+include template/mixins
+
+append config
+  - 
+    css.push("/css/index.css");
+    js.push("/js/index.js");
+    headerClass = "white bg-grad-black absolute";
+    activeNav = "Home";
+    footerClass = "auto-hide";
+
+block content
+  .section.full#splash
+    #slideshow
+      each img, i in data.splash
+        -
+          var attr = {};
+          for(var prop in img.classes)
+            attr["data-class-"+prop] = img.classes[prop];
+        .slide(
+          style=`background-image: url(${img.url});`
+        )&attributes(attr)
+    #bottom-text-wrapper
+      #bottom-text
+        #comfort comfort#[span.dot .]#[br] redefined.
+        a(href="/shop/")#btn-shop-now shop now &gt;
+    #social-wrapper
+      each link, id in data.social
+        a.social-link.selectable(href=link.url target="_blank")
+          .icon(style=`background-image: url(/img/elements/icons/${id}-white.png)`)
+          .text= link.value 
+          .clear

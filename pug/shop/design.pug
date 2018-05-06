@@ -1,0 +1,101 @@
+extends ../template/layout
+include ../template/mixins
+
+prepend config
+  - 
+    var hex = color.color.hex;
+    var luma = utils.hexLuminance(hex);
+    var dark = luma < 80;
+    name = design.name;
+    color = color.name;
+    
+    title = name + " in " + color;
+
+append config
+  - 
+    css.push("/css/design.css");
+    css.push("/css/shop.css")
+    js.push("/js/design.js");
+    headerClass = "bg-gray min ";
+    headerClass += "white";
+    //headerClass += dark ? "white" : "gray";
+    textClass = dark ? "light" : "dark";
+    activeNav = "Shop";
+    bgStyle = `background-color: ${hex}`;
+    headerStyle = "";
+    footerStyle = bodyStyle = headerStyle;
+    
+    var size = design.size.replace("{size}", `<span id="item-size">#</span>`);
+
+block content
+  style .other-color.active, .thumb.active{ border-color: #{hex}; }
+  
+  #shop-navigation-header
+    #shop-navigation-center 
+      .text #[a(href="/shop") Shop] #[span.arrow &rsaquo;] #{name}
+      - // #[span.arrow &rsaquo;] #{color}
+  .section#design-wrapper
+    #design-center
+      #preview-wrapper.pre-animation
+        img.ratio(src="/img/elements/ratios/66x100.png")
+        #designs-wrapper
+          each img in images
+            .design(
+              style=`background-image: url(${img.url})`
+              data-item-size=img.size)
+              
+        #thumbs-wrapper
+          each img in images
+            .thumb(style=`background-image: url(${img.icon})`)
+          .clear
+              
+      #info-wrapper
+        #design-name.pre-animation(class=textClass style=bgStyle)= name
+        #design-details.pre-animation
+          #design-color= "in " + color
+          #design-price= design.price
+          .clear
+        .desc-header.pre-animation About the product
+        .desc-par.pre-animation= design.desc
+        .desc-header.pre-animation Sizes #[#btn-size-chart See size chart]
+        .desc-par.pre-animation!= size
+          
+        if design.colors.length > 0
+          .desc-header.pre-animation Other colors
+          #other-colors-wrapper.pre-animation
+            each c in design.colors
+              -
+                var col = data.colors.find(utils.sameId(c));
+                var viewing = colorId == col.id;
+                var src = c.images[0].icon;
+                var id = utils.shopId(design, c);
+              a.other-color(
+                  style=`background-image: url(${src})`
+                  class={active: viewing}
+                  href=`/shop/${id}`
+                )
+            .clear
+          .desc-header.pre-animation How to Order
+          .desc-par.pre-animation.selectable Send us a message on #[a(href=data.social.fb.url target="_blank") Facebook] or on Viber at #{data.social.phone.value}, or email us at #[a(href=data.social.email.url target="_blank")= data.social.email.value].
+          
+      .clear
+  
+  #size-chart-wrapper
+    #size-chart
+    #btn-close
+      
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+  

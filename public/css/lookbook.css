@@ -1,0 +1,189 @@
+#lookbook-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+#lookbook-wrapper #lookbook-center {
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+}
+
+#lookbook-wrapper #lookbook-center #lookbook {
+  width: 100%;
+  height: 100%;
+  -webkit-perspective: 100em;
+  -moz-perspective: 100em;
+  -moz-osx-perspective: 100em;
+  -ms-perspective: 100em;
+  -o-perspective: 100em;
+  perspective: 100em;
+}
+
+#lookbook-wrapper #lookbook-center #lookbook #lookbook-controls {
+  z-index: 1000000;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -moz-osx-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  opacity: 1;
+  white-space: nowrap;
+  color: #212121;
+  -webkit-transition: opacity 0.1s;
+  -o-transition: opacity 0.1s;
+  -moz-transition: opacity 0.1s;
+  transition: opacity 0.1s;
+  background-color: white;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+#lookbook-wrapper #lookbook-center #lookbook #lookbook-controls.hidden {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+#lookbook-wrapper #lookbook-center #lookbook #lookbook-controls * {
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+  color: #212121;
+}
+
+#lookbook-wrapper #lookbook-center #lookbook #lookbook-controls .btn {
+  width: 3em;
+  height: 3em;
+  text-align: center;
+  -moz-background-size: 40%;
+  -o-background-size: 40%;
+  background-size: 40%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+  opacity: 0.5;
+}
+
+#lookbook-wrapper #lookbook-center #lookbook #lookbook-controls .btn:hover {
+  -webkit-transform: scale(1.02);
+  -moz-transform: scale(1.02);
+  -moz-osx-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  -o-transform: scale(1.02);
+  transform: scale(1.02);
+  opacity: 1;
+}
+
+#lookbook-wrapper #lookbook-center #lookbook #lookbook-controls .btn:active {
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -moz-osx-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -o-transform: scale(0.9);
+  transform: scale(0.9);
+  opacity: 0.5;
+}
+
+#lookbook-wrapper #lookbook-center #lookbook #lookbook-controls #btn-close {
+  background-image: url(/img/elements/close-gray.png);
+}
+
+#lookbook-wrapper #lookbook-center #lookbook #lookbook-controls #btn-next {
+  background-image: url(/img/elements/right-arrow-gray.png);
+}
+
+#lookbook-wrapper #lookbook-center #lookbook #lookbook-controls #btn-prev {
+  background-image: url(/img/elements/left-arrow-gray.png);
+}
+
+#lookbook-wrapper #lookbook-center #lookbook #lookbook-controls #lookbook-title {
+  font-size: 1.5em;
+  font-family: "Theano Didot Regular", serif;
+  padding: 0.5em;
+}
+
+@media screen and (min-width: 0) and (max-width: 319px) {
+  #lookbook-wrapper #lookbook-center #lookbook #lookbook-controls #lookbook-title {
+    display: none;
+  }
+}
+
+#lookbook-wrapper #lookbook-center #lookbook #lookbook-controls #page-count {
+  font-size: 1em;
+  opacity: 0.6;
+}
+
+#lookbook-wrapper #lookbook-center #lookbook .page {
+  background-color: whitesmoke;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  display: none;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -moz-osx-transform-origin: left center;
+  -ms-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
+
+#lookbook-wrapper #lookbook-center #lookbook .page.left {
+  -webkit-transform: rotateY(-90deg);
+  -moz-transform: rotateY(-90deg);
+  -moz-osx-transform: rotateY(-90deg);
+  -ms-transform: rotateY(-90deg);
+  -o-transform: rotateY(-90deg);
+  transform: rotateY(-90deg);
+  z-index: 5000;
+  opacity: 0;
+  display: block;
+}
+
+#lookbook-wrapper #lookbook-center #lookbook .page.right {
+  -webkit-transform: rotateY(45deg);
+  -moz-transform: rotateY(45deg);
+  -moz-osx-transform: rotateY(45deg);
+  -ms-transform: rotateY(45deg);
+  -o-transform: rotateY(45deg);
+  transform: rotateY(45deg);
+  z-index: 3000;
+  opacity: 0;
+  display: block;
+}
+
+#lookbook-wrapper #lookbook-center #lookbook .page.active {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -moz-osx-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  z-index: 4000;
+  opacity: 1;
+  display: block;
+}

@@ -1,0 +1,71 @@
+@import defaults
+@import mixins
+
+#campaign
+  border: 10px solid white
+  border-bottom: 0
+  background-color: white
+
+  img
+    width: 100%
+    max-width: 800px
+    height: auto
+    margin: auto
+    display: block
+    border-bottom: 10px solid white
+    transition: all 1s
+    +prefix(transform-origin, top center)
+
+    &.pre-animation
+      +prefix(transform, translate(0, 5em) scale(0.9))
+      opacity: 0
+
+  #info
+    $font-size: 1.8em
+    position: fixed
+    background-color: rgba(255, 255, 255, 0.5)
+    color: $color-dark-gray
+    bottom: 7%
+    left: 50%
+    +prefix(transform, translateX(-50%))
+    font-size: $font-size
+    font-weight: 300
+    padding: 0.2em
+    white-space: nowrap
+    transition: background 0.2s
+    box-shadow: $shad-drop
+    transition: 0.2s all
+
+    &:hover
+      background-color: white
+
+    &:active
+      +prefix(transform, translateX(-50%) scale(0.9))
+
+    .item
+      display: inline-block
+      vertical-align: middle
+      text-decoration: none
+
+    #btn-return
+      width: $font-size * 0.75
+      height: $font-size * 0.75
+      text-align: center
+      background-position: center
+      background-repeat: no-repeat
+      background-image: url(/img/elements/left-arrow-gray.png)
+      background-size: 35%
+
+      &:after
+        content: ' '
+        width: 1px
+        height: 80%
+        top: 10%
+        right: -1px
+        background-color: $color-dark-gray
+        position: absolute
+
+    #name
+      font-family: $font-serif
+      padding: 0 0.5em
+      cursor: default

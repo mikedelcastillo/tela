@@ -1,0 +1,16 @@
+- var nav = data.navigation;
+each link in nav
+  - 
+    var _sub = link.sub;
+    var hasSub = _sub ? _sub.length > 0 : false;
+    var _href = link.href;
+    var _class = {
+      "active": activeNav == link.name,
+      "has-sub": hasSub
+    };
+  span.nav-main-group(class=_class)
+    a.nav-main-link(href=_href class=_class)= link.name
+    if hasSub
+      .nav-sub-group
+        each sub in link.sub
+          a.nav-sub-link(href=sub.href)= sub.name

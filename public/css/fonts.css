@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Cassannet Outline';
+  src: url("/fonts/cassannet-outline-webfont.woff2") format("woff2"), url("/fonts/cassannet-outline-webfont.woff") format("woff"), url("/fonts/cassannet-outline.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Regencie Light Alt';
+  src: url("/fonts/regencie-light-alt-webfont.woff2") format("woff2"), url("/fonts/regencie-light-alt-webfont.woff") format("woff"), url("/fonts/regencie-light-alt.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Theano Didot Regular';
+  src: url("/fonts/theano-didot-regular-webfont.woff2") format("woff2"), url("/fonts/theano-didot-regular-webfont.woff") format("woff"), url("/fonts/theano-didot-regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}

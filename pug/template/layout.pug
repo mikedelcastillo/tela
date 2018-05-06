@@ -1,0 +1,66 @@
+block config
+  - 
+    var RAND = Math.floor(Math.random() * 9999999999999);
+    var QRAND = "?v=" + RAND;
+    if(!title) title = "TELA Basics";
+    else title += " – TELA Basics";
+    var js = [
+      "/js/jquery.js", 
+      "/js/fastclick.js", 
+      "/js/hammer.min.js",
+      "/js/main.js"
+    ];
+    var css = ["/css/main.css"];
+    var themeColor = "#212121";
+    var iconLink = "/img/elements/icons/tela-icon.png";
+    var faviconLink = "/img/elements/icons/favicon.ico";
+    var headerClass, activeNav, headerStyle, bodyStyle, footerStyle;
+    
+doctype html
+html(lang="en")
+  head
+    title #{title}
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    meta(charset="utf-8")
+      
+    meta(name="msapplication-tap-highlight" content="no")
+      
+    meta(name="theme-color" content=themeColor)
+    meta(name="apple-mobile-web-app-status-bar-style" content=themeColor)
+    meta(name="mobile-web-app-status-bar-style" content=themeColor)
+      
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="mobile-web-app-capable" content="yes")
+    
+    link(rel="apple-touch-icon" sizes="192x192" href=iconLink)
+    link(rel="shortcut icon" href=faviconLink type="image/x-icon")
+    link(rel="icon" href=faviconLink type="image/x-icon")
+      
+    meta(property="og:title" content="TELA basics")
+    meta(property="og:site_name" content="TELA basics")
+    meta(property="og:description" content="T É - L A /telɑ/ basics is the brand for the discerning shopper who opts for comfortable yet stylish pieces to complement the rest of her wardrobe.")
+    meta(property="og:image" content="http://telabasics.com/img/lookbook/1/cover-no-title-medium.jpg")
+  
+    each file in js
+      script(src=file + QRAND)
+    each file in css
+      link(href=file + QRAND rel="stylesheet" type="text/css")
+        
+    script (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');    ga('create', 'UA-97486506-1', 'auto');   ga('send', 'pageview');
+    #loading-wrapper
+      #loading-center
+        #loading-anim
+    
+    block header
+      #main-header(class=headerClass style=headerStyle)
+        a#logo-wrapper(href="/")
+          #text-tela TÉ-LA
+          #text-basics Basics
+          .clear
+        #nav-wrapper
+          include navigation
+          #search-btn
+        .clear
+    block content
+    block footer
+      include footer

@@ -1,0 +1,77 @@
+@import defaults
+@import mixins
+
+#shelf-header
+  color: $color-dark-gray
+  z-index: 1000
+  font-size: 2.5em
+
+  #shelf-title
+    font-family: $font-serif
+    text-align: center
+    padding: 0.5em
+    transition: opacity 0.5s, transform 0.5s
+
+    &.pre-animation
+      opacity: 0
+      transition: all 0s
+      +prefix(transform, translateY(0.1em))
+
+#shelf-wrapper
+  padding-top: 1em
+  padding-bottom: 1em
+  background-color: $color-off-white
+
+  #shelf-center
+    width: 100%
+    margin: auto
+    text-align: center
+
+    $max-width: 300px
+    +break-grid(max-width, $max-width, $max-width, $max-width * 2, $max-width, 5)
+
+    .book
+      margin-top: 1em
+      margin-bottom: 1em
+      text-decoration: none
+      display: inline-block
+      width: 100%
+      max-width: $max-width
+      box-shadow: $shad-subtle
+      cursor: pointer
+      transition: all 0.5s
+      +prefix(transform, scale(0.98))
+
+      &.pre-animation
+        +prefix(transform, translate(0, 2em))
+        opacity: 0
+        transition: all 0.5s
+
+      &:hover
+        +prefix(transform, scale(1))
+        transition: all 0.2s
+
+      &:active
+        +prefix(transform, scale(0.9))
+        opacity: 0.5
+
+      a
+        display: block
+        text-decoration: none
+
+      .preview
+        background-position: center
+        background-size: cover
+        background-repeat: no-repeat
+
+        .ratio
+          width: 100%
+          height: auto
+
+      .name
+        background-color: white
+        text-align: center
+        font-family: $font-serif
+        color: $color-dark-gray
+        padding: 0.5em 0
+        font-size: 1.5em

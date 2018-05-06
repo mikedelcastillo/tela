@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Home",
+    "href": "/",
+    "sub": []
+  },
+  {
+    "name": "Matter",
+    "href": "/matter/",
+    "sub": [
+      {
+        "name": "Lookbook",
+        "href": "/matter/lookbook/"
+      },
+      {
+        "name": "Campaign",
+        "href": "/matter/campaign/"
+      }
+    ]
+  },
+  {
+    "name": "Shop",
+    "href": "/shop/",
+    "sub": []
+  }
+]

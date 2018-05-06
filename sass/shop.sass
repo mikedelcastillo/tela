@@ -1,0 +1,103 @@
+@import mixins
+@import defaults
+
+#shop-navigation-header
+  width: 100%
+  background-color: $color-off-white
+  box-shadow: $shad-subtle
+  z-index: 100
+
+  #shop-navigation-center
+    width: 100%
+    margin: auto
+    text-transform: uppercase
+
+    .text
+      padding: 1.5em 5%
+      font-size: 1em
+      color: rgba(0, 0, 0, 0.5)
+
+      a
+        color: inherit
+
+      .arrow
+        display: inline-block
+        margin: 0 1em
+
+#shop-wrapper
+  background-color: white
+  padding: 2em 0.5em
+
+  #shop-center
+    max-width: 1500px
+    margin: auto
+
+    .shop-item
+      padding: 0.5em
+      display: block
+      float: left
+      +break-grid-inv-perc(width, 0%, 100%, 350px, 400px, 4)
+      transition: 0.5s transform, 0.5s opacity
+      +prefix(transform, scale(0.98))
+
+      &.pre-animation
+        transition: 0.5s transform, 0.5s opacity
+        +prefix(transform, translate(0, 1em) scale(1))
+        opacity: 0
+
+      &:hover
+        +prefix(transform, scale(1))
+        transition: 0.2s transform, 0.2s opacity
+
+      &:active
+        +prefix(transform, scale(0.9))
+        transition: 0.2s transform, 0.2s opacity
+        opacity: 0.5
+
+      a
+        display: block
+        text-decoration: none
+        color: $color-dark-gray
+
+        .preview
+          background-position: center
+          background-repeat: no-repeat
+          background-size: cover
+
+          .ratio
+            width: 100%
+            height: auto
+
+        .text
+          padding-top: 0.5em
+
+          .name
+            font-size: 1.2em
+            font-weight: bold
+
+          .color
+            float: left
+            opacity: 0.75
+            vertical-align: middle
+
+            .preview
+              display: inline-block
+              width: 1em
+              height: 1em
+              border-radius: 100px
+              vertical-align: middle
+              margin-right: 0.5em
+
+            span
+              display: inline-block
+              vertical-align: middle
+
+          .price
+            float: right
+            font-size: 1.2
+            font-weight: 300
+
+            &:before
+              font-size: 0.8em
+              opacity: 0.8
+              content: "PHP "

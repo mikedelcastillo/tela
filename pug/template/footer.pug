@@ -1,0 +1,13 @@
+a#contact
+#footer-wrapper.section.shad-subtle(style=footerStyle class=footerClass)
+  .column.col-1
+    each link, id in data.social
+      a.social-link.selectable(href=link.url target="_blank")
+        .icon(style=`background-image: url(/img/elements/icons/${id}-white.png)`)
+        .text= link.value 
+        .clear
+  .column.col-2
+    #copyright.line &copy; 2017, Téla Basics
+    #bymike.line Coded by #[a(href="http://mikedelcastillo.github.io") Mike del Castillo]
+  .clear
+    
